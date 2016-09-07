@@ -22,7 +22,7 @@ def get_html(room):
     assert(r.status_code == 200)
     return r.text
 
-number_regex = re.compile(ur'WASHERS:</span>\s*(\d+) of 2 available\s*<span[^>]*>DRYERS:</span>\s*(\d+) of 2 available')
+number_regex = re.compile(ur'WASHERS:</span>\s*(\d+) of \d+ available\s*<span[^>]*>DRYERS:</span>\s*(\d+) of \d+ available')
 def number_available(room):
     html = get_html(room)
     match = re.search(number_regex, html)
