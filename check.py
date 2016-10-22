@@ -12,7 +12,11 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 def get_rooms():
-    return (int(room) for room in os.environ.get("ROOMS").split(","))
+    rooms = os.environ.get("ROOMS")
+    if rooms is not None:
+        return (int(room) for room in rooms.split(","))
+    else:
+        return []
 
 def get_link(room):
     return "http://classic.laundryview.com/laundry_room.php?view=c&lr=%d" % room
